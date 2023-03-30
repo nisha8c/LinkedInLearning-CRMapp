@@ -16,13 +16,10 @@ export const addNewContact = (req: Request, res: Response) => {
     });
 };
 
-export const getContacts = (req: Request, res: Response) => {
-    Contact.find({}, (err: Error, contact: any) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(contact);
-    });
+export const getContacts = async (req: Request, res: Response) => {
+
+    const data = await Contact.find().exec();
+    res.status(200).json(data);
 };
 
 export const getContactWithID = (req: Request, res: Response) => {
