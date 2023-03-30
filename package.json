@@ -14,12 +14,14 @@
     "react": "18.2.0",
     "react-native": "0.71.4",
     "react-native-material-kit": "^0.6.0-beta.1",
-    "react-native-vector-icons": "^9.2.0"
+    "react-native-vector-icons": "^9.2.0",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.0.14",
     "@types/react-native": "^0.71.5",
+    "@types/react-redux": "^7.1.25",
     "typescript": "^4.9.4"
   },
   "private": true
