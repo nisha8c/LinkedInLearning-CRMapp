@@ -1,25 +1,36 @@
-import {Text, TouchableOpacity, View, StyleSheet, Image, TouchableWithoutFeedback} from "react-native";
+import {Text, View, StyleSheet, Image, TouchableWithoutFeedback, SafeAreaView, ImageBackground} from "react-native";
 import {ContactData} from "../types/types";
-//import { getTheme } from "react-native-material-kit";
+import { useDispatch } from "react-redux";
+import { getTheme } from "react-native-material-kit";
 import Icon from 'react-native-vector-icons/EvilIcons';
 
-//const theme = getTheme();
 
 const styles = StyleSheet.create({
     card: {
-        marginTop: 20,
+        flex: 1,
+        shadowColor: 'black',
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 6,
+        shadowOpacity: 0.26,
+        elevation: 8,
+        backgroundColor: 'white',
+        padding: 20,
+        borderRadius: 10,
+        marginBottom: 25,
     },
     title: {
-        top: 20,
-        left: 80,
         fontSize: 24,
+        paddingLeft: 10,
     },
     image: {
-        height: 100,
+        flex: 1,
+        height: '100%',
+        width: '100%',
     },
     action: {
         backgroundColor: 'black',
         color: 'white',
+        paddingLeft: 10,
     },
     icon: {
         position: 'absolute',
@@ -37,15 +48,19 @@ interface IPersonDetailsComponentProps {
 const PersonDetails = ({data}: IPersonDetailsComponentProps) => {
 
     return(
-        <>
-            <TouchableWithoutFeedback>
-                <View>
-                    <Image source={require('../images/background.jpg')} style={styles.image} />
-                    <Text style={[styles.title]}>{data.firstName} {data.lastName}</Text>
-                    <Text style={[styles.action]}>{data.company}</Text>
+        <SafeAreaView>
+            <TouchableWithoutFeedback
+                onPress={() => console.log('Selected Person: ', data.firstName)}
+            >
+                <View style={styles.card}>
+                    <ImageBackground source={require('../images/background.jpg')} style={styles.image}>
+
+                        <Text style={styles.title}>{data.firstName} {data.lastName}</Text>
+                        <Text style={styles.action}>{data.company}</Text>
+                    </ImageBackground>
                 </View>
             </TouchableWithoutFeedback>
-        </>
+        </SafeAreaView>
     );
 };
 
